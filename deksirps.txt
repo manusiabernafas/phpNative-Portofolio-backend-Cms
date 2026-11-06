@@ -1,0 +1,56 @@
+Template portofolio untuk developer dan programmer dengan tema antariksa gelap yang tidak membosankan. Logo teknologi unggulan mengorbit foto profil dalam sistem 3D, kartu proyek miring mengikuti gerak kursor, testimoni berputar di carousel silinder 3D, bintang di latar bergerak parallax saat di-scroll, dan setiap bagian muncul dengan animasi halus. Semua dibuat dengan CSS dan JavaScript murni sehingga tetap ringan dibuka dari HP.
+
+Seluruh isi situs dikelola dari CMS yang rapi: profil, foto, CV PDF, proyek dengan galeri banyak gambar, logo tech stack (70+ pilihan), pengalaman kerja, pendidikan, layanan beserta harga, testimoni, sampai pesan dari formulir kontak. Dashboard menampilkan jumlah pengunjung, proyek yang paling sering dilihat, dan pesan terbaru. Sudah terisi data contoh lengkap dengan ilustrasi, jadi tinggal ganti dengan karya sendiri.
+Cara kerja
+Halaman depan membaca semua data dari MySQL lalu menyusunnya menjadi hero, marquee nama klien, tentang (dengan kartu terminal berisi profil), proyek dengan filter kategori, keahlian per kategori, layanan, timeline pengalaman, testimoni, dan formulir kontak. Teknologi yang ditandai unggulan otomatis ikut mengorbit di hero; nama klien diambil dari data proyek; angka tahun berkarya, jumlah proyek, dan klien dihitung otomatis.
+
+Setiap proyek punya halaman detail sendiri dengan cover yang "rebah" lalu tegak saat di-scroll, info klien/peran/tahun/durasi, logo teknologi, cerita proyek berformat (subjudul, poin, tebal, kode, link), galeri dengan lightbox, dan navigasi ke proyek sebelum/berikutnya. Jumlah dilihat dihitung sekali per sesi dan kunjungan harian dicatat untuk grafik di dashboard.
+
+CMS dilindungi login dengan password hash, CSRF di setiap form, kunci 15 menit setelah 5 kali gagal, dan sesi di perangkat lain otomatis keluar saat password diganti. Gambar yang diunggah diperiksa tipe aslinya lalu digambar ulang menjadi WebP berukuran pas sehingga situs tetap cepat. Formulir kontak dikirim tanpa reload, dilindungi honeypot, batas 3 pesan per 10 menit per IP, dan penolakan pesan dobel; pesan bisa diekspor ke CSV yang aman dibuka di Excel.
+Fitur
+Tema antariksa gelap dengan warna flat: tanpa gradasi, tanpa glow, tanpa emoji
+Hero dengan logo tech stack yang mengorbit foto profil dalam sistem 3D CSS
+Kartu proyek dengan efek tilt 3D mengikuti kursor
+Testimoni di carousel silinder 3D (tombol, swipe, dan putar otomatis)
+Latar bintang parallax 3 lapis + progress bar scroll + animasi muncul saat di-scroll
+Judul hero muncul kata per kata, angka statistik menghitung naik
+Filter proyek per kategori tanpa reload
+Halaman detail proyek: cover 3D yang tegak saat di-scroll, galeri + lightbox, proyek sebelum/berikutnya
+CMS profil: nama, peran, hero, bio, foto, CV PDF, email, WhatsApp, 6 media sosial, SEO
+4 pilihan warna aksen yang bisa diganti dari CMS
+Kelola proyek: cover, galeri banyak gambar + keterangan, teknologi, unggulan, tampil/sembunyi, urutan
+70+ logo teknologi satu warna siap pilih (Laravel, React, Go, Flutter, Docker, Figma, dll)
+Kelola pengalaman kerja, pendidikan, layanan + harga mulai, dan testimoni + rating
+Formulir kontak AJAX dengan pilihan anggaran, tetap jalan tanpa JavaScript
+Kotak masuk pesan: tandai dibaca, balas email, ekspor CSV aman
+Dashboard: pengunjung 30 hari, grafik 14 hari, total dilihat, proyek terpopuler
+Upload gambar otomatis dikompres ke WebP (GD) dan folder upload anti-eksekusi script
+Keamanan: PDO prepared statement, CSRF, password_hash, kunci login, sesi batal saat ganti password
+Honeypot + batas kirim per IP + tolak pesan dobel di formulir kontak
+Responsif nyaman dari HP 390px sampai layar 1920px
+Data contoh lengkap dengan 30+ ilustrasi SVG, PHP Native tanpa framework & tanpa Composer
+Panduan instalasi
+Kebutuhan: PHP 8.1 atau lebih baru (ekstensi GD aktif, bawaan XAMPP) dan MySQL/MariaDB.
+
+Ekstrak ZIP lalu pindahkan folder porto-orbit ke:
+
+XAMPP: C:\xampp\htdocs\porto-orbit
+Laragon: C:\laragon\www\porto-orbit
+Jalankan Apache dan MySQL.
+
+Buka http://localhost/phpmyadmin → Import → pilih database/porto_orbit.sql → Import.
+
+Atau lewat terminal:
+
+mysql -u root -p < database/porto_orbit.sql
+Sesuaikan config/database.php jika user/password MySQL kamu berbeda.
+
+Buka situs: http://localhost/porto-orbit/
+
+CMS: http://localhost/porto-orbit/index.php?page=login (atau klik tautan CMS di footer)
+
+Username: admin
+Password: admin123 (segera ganti di menu Akun)
+Ganti isi profil, proyek, dan foto dari CMS, lalu upload ke hosting (folder public_html).
+
+Tips: jika ingin mengunggah gambar besar, naikkan upload_max_filesize dan post_max_size di php.ini (misal 20M).
